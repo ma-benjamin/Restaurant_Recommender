@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Restaurants2 </title>
+    {% load static %}
+</head>
+<body>
+    {% block pagecontent %}
+    
+    <div class="table-div">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Restaurant</th>
+            <th>Hours</th>
+            <th> Categories </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in restaurants %}
+            <tr>
+              <td>{{ r.id }}</td>
+              <td>{{ r.restaurantName }}</td>
+              <td>{{ r.hoursInterval}}</td>
+              <td>{{ r.cuisineType }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% include 'partials/nav-bar.html' %}
+    {% endblock %}
+  </body>
+</html>

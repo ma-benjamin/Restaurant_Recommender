@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block tile %} About {% endblock %}</title>
+</head>
+<body>
+    {% block pagecontent %}
+    <p>
+    This website is used as a basis for understanding Django
+    
+    </p>
+    
+    <img src="{% static 'images/pfp.png' %}" alt="profile"
+        width="400"
+        height="500">
+    {% include 'partials/nav-bar.html' %}
+    
+    {% endblock %}
+</body>
+</html>

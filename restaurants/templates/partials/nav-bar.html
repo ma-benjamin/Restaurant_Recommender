@@ -1,0 +1,11 @@
+<div class="nav">
+    <a href="{% url 'home' %}">Go Home</a>
+    <a href="{% url 'about' %}">About This Site</a>
+    <a href="{% url 'data' %}">View Data</a>
+    <form method="POST" action="/search">
+      {% csrf_token %}
+      <input type="text" name="textfield">
+      
+      <button type="submit">Upload text</button>
+      </form>
+  </div>
