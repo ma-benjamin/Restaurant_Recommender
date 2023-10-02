@@ -1,9 +1,31 @@
-.container {
-    background: #eac656;
-    margin: 10 10 10 10;
-    border: 3px solid black;
+:root {
+    --black: #262626;
+    --red: #b3001b;
+    --lapis: #255c99;
+    --light-blue: #7ea3cc;
+    --tan: #ccad8f;
 }
 
-.nav a {
-    background: #dedede;
+html * {
+    font-family: Nunito, sans-serif;
+}
+
+.head {
+    padding-left: 10px;
+    font-size: 30px;
+    font-weight: 600;
+    display: inline;
+    vertical-align: middle;
+}
+
+.logo {
+    height: 30px;
+}
+
+.container {
+    background: var(--tan);
+    padding: 10px;
+    margin: 10 10 10 10;
+    border: 3px solid var(--black);
+    border-radius: 20px;
 }

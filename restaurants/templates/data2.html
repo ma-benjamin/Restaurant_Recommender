@@ -9,7 +9,7 @@
 </head>
 <body>
     {% block pagecontent %}
-    
+    <!-- <header> {{ restaurants[0].zipCode }} </header> -->
     <div class="table-div">
       <table class="table">
         <thead>
@@ -25,8 +25,9 @@
             <tr>
               <td>{{ r.id }}</td>
               <td>{{ r.restaurantName }}</td>
-              <td>{{ r.hoursInterval}}</td>
+              <td>{{ r.hoursInterval }}</td>
               <td>{{ r.cuisineType }}</td>
+              <!-- <td> <form method="POST" action="/search"> <button type="submit"> Like </button> <button type="submit"> Dislike </button></form> </td> -->
             </tr>
           {% endfor %}
         </tbody>

@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
+import pandas as pd
 import json
+from . import models
 
 # Create your views here.
 def say_hello(request):
@@ -18,23 +20,27 @@ class AboutPageView(TemplateView):
 
 class DataPageView(TemplateView):
     def get(self, request, **kargs):
-        f = open('./restaurants/zipcodes/07039_all.json')
-        data = json.load(f)
-        f.close()
-        return render(request, 'data.html', data)
+        df = pd.read_csv('./restaurants/zipcodes/07039.csv')
+        return render(request, 'data.html', {'restaurants': df.to_dict(orient='records')})
     
 def search(request):
     if request.method == 'POST':
         zip = request.POST.get('textfield', None)
+        zip_path = "./restaurants/zipcodes/" + zip + ".csv"
         try:
-            zip_path = "./restaurants/zipcodes/" + zip + ".json"
-            f = open(zip_path)
-            data = json.load(f)
-            f.close()
-            return render(request, 'data2.html', data)
+            df = pd.read_csv(zip_path)
         except:
-            print("ben error")
-            return HttpResponse("none")
+            try: 
+                # models.search_restaurants(zip)
+                df = pd.read_csv(zip_path)
+            except:
+                return HttpResponse("no results found")
+        return render(request, 'data2.html', {'restaurants': df.to_dict(orient='records')})
     else:
         return HttpResponse("not post")
     
+def review(request):
+    if request.method == 'POST':
+        return
+    else:
+        return

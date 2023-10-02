@@ -1,11 +1,22 @@
-<div class="nav">
-    <a href="{% url 'home' %}">Go Home</a>
-    <a href="{% url 'about' %}">About This Site</a>
-    <a href="{% url 'data' %}">View Data</a>
-    <form method="POST" action="/search">
-      {% csrf_token %}
-      <input type="text" name="textfield">
-      
-      <button type="submit">Upload text</button>
-      </form>
-  </div>
+{% load static %}
+
+<div id='sidenav' class="nav">
+  <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+  <script src="{% static 'js/nav.js' %}"></script>
+  <a href="javascript:void(0)" class="closebtn"
+      onclick = "closeNav()"> $times; </a>
+
+  <form method="POST" action="/search">
+    <div> Search by Zipcode </div>
+    {% csrf_token %}
+    <input type="text" name="textfield" placeholder = "12345">
+    
+    <button type="submit">Search</button>
+  </form>
+
+  <a href="{% url 'home' %}">Go Home</a>
+  <a href="{% url 'about' %}">About This Site</a>
+  <a href="{% url 'data' %}">View Data</a>
+</div>
+
+<span onclick="openNav()"> <img id="menu" src="{% static 'images/menu.png' %}" alt=""> </span>
