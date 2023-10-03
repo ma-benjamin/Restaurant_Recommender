@@ -27,10 +27,11 @@ def search_restaurants(zip):
 	df = data['restaurants']
 	df.to_csv("./restaurants/zipcodes/" + zip + ".csv", index=False)
 
-def add_review(zip, indx, review):
+def add_review(zip, id, review):
 	zip_path = "./restaurants/zipcodes/" + zip + ".csv"
 	df = pd.read_csv(zip_path)
-	df.at[indx, 'review'] = review
+	df.loc[df['id'] == int(id), 'review'] = review
+	df = df.sort_values(by=['review'], ascending=False)
 	df.to_csv(zip_path, index=False)
 
 # zip = "07039"

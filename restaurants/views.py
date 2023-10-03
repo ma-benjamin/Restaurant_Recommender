@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 import pandas as pd
 import json
 from . import models
+from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
 def say_hello(request):
@@ -38,9 +39,23 @@ def search(request):
         return render(request, 'data2.html', {'restaurants': df.to_dict(orient='records')})
     else:
         return HttpResponse("not post")
-    
-def review(request):
+ 
+def like(request):
     if request.method == 'POST':
-        return
+        zip = request.POST.get('zip', None)
+        id = request.POST.get('id', None)
+        models.add_review(zip, id, 1)
+        response = redirect('/data')
+        return response
     else:
-        return
+        return HttpResponse("not sent :(")
+    
+def dislike(request):
+    if request.method == 'POST':
+        zip = request.POST.get('zip', None)
+        id = request.POST.get('id', None)
+        models.add_review(zip, id, -1)
+        response = redirect('/data')
+        return response
+    else:
+        return HttpResponse("not sent :(")
