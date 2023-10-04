@@ -12,6 +12,9 @@ headers = {
 
 def search_restaurants(zip):
 	# request first page of restaurants
+	if True:
+		print("1")
+		return
 	url = "https://restaurants-near-me-usa.p.rapidapi.com/restaurants/location/zipcode/" + zip + "/"
 	response = requests.get(url + "0", headers=headers)
 	data = response.json()
@@ -41,3 +44,4 @@ def add_review(zip, id, review):
 # print(df)
 # add_review(zip, 0, 2)
 
+search_restaurants("07041")

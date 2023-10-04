@@ -32,7 +32,7 @@ def search(request):
             df = pd.read_csv(zip_path)
         except:
             try: 
-                # models.search_restaurants(zip)
+                models.search_restaurants(zip)
                 df = pd.read_csv(zip_path)
             except:
                 return HttpResponse("no results found")

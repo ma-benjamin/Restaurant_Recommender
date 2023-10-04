@@ -8,6 +8,11 @@
 
 html * {
     font-family: Nunito, sans-serif;
+    padding: 10 10 10 10;
+}
+
+#main {
+    transition: 0.5s;
 }
 
 .head {
@@ -25,7 +30,6 @@ html * {
 .container {
     background: var(--tan);
     padding: 10px;
-    margin: 10 10 10 10;
     border: 3px solid var(--black);
     border-radius: 20px;
 }
