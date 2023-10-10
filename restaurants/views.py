@@ -36,7 +36,7 @@ def search(request):
                 df = pd.read_csv(zip_path)
             except:
                 return HttpResponse("no results found")
-        return render(request, 'data2.html', {'zipcode': zip, 'restaurants': df.to_dict(orient='records')})
+        return render(request, 'data.html', {'zipcode': zip, 'restaurants': df.to_dict(orient='records')})
     else:
         return HttpResponse("not post")
  
