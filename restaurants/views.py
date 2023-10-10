@@ -22,7 +22,7 @@ class AboutPageView(TemplateView):
 class DataPageView(TemplateView):
     def get(self, request, **kargs):
         df = pd.read_csv('./restaurants/zipcodes/07039.csv')
-        return render(request, 'data.html', {'restaurants': df.to_dict(orient='records')})
+        return render(request, 'data.html', {'zipcode': '07039', 'restaurants': df.to_dict(orient='records')})
     
 def search(request):
     if request.method == 'POST':
@@ -36,7 +36,7 @@ def search(request):
                 df = pd.read_csv(zip_path)
             except:
                 return HttpResponse("no results found")
-        return render(request, 'data2.html', {'restaurants': df.to_dict(orient='records')})
+        return render(request, 'data2.html', {'zipcode': zip, 'restaurants': df.to_dict(orient='records')})
     else:
         return HttpResponse("not post")
  

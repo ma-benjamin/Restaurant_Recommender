@@ -8,6 +8,6 @@ urlpatterns = [
     re_path(r'^about$', views.AboutPageView.as_view(), name='about'),
     re_path(r'^data$', views.DataPageView.as_view(), name='data'),
     re_path(r'^search$', views.search),
-    re_path(r'^like$', views.like),
+    re_path(r'^review$', views.like),
     re_path(r'dislike$', views.dislike),
 ]

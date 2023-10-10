@@ -11,3 +11,13 @@ table.table{
 th, td {
     padding: 10px;
 }
+
+button.liked {
+    background-color: var(--lapis);
+    color: white;
+}
+
+button.disliked {
+    background-color: var(--red);
+    color: white;
+}

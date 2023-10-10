@@ -34,17 +34,25 @@
               <td>{{ r.hoursInterval}}</td>
               <td>{{ r.cuisineType }}</td>
               <td> 
-              <form method="POST" action="/like"> 
+              <form method="POST" action="/review"> 
                 {% csrf_token %} 
-                <input type="hidden" name="zip" value= '{{ restaurants.0.zipCode }}'>
+                <input type="hidden" name="zip" value= '{{ zipcode }}'>
                 <input type="hidden" name="id" value= '{{ r.id }}'>  
-                <button type="submit"> Like </button> 
+                {% if r.review == 1 %}
+                <button type="submit" class = "liked"> Like </button>
+                {% else %} 
+                <button type="submit"> Like </button>
+                {% endif %}
               </form>
               <form method="POST" action="/dislike"> 
                 {% csrf_token %} 
-                <input type="hidden" name="zip" value= '{{ restaurants.0.zipCode }}'> 
-                <input type="hidden" name="id" value= '{{ r.id }}'>  
+                <input type="hidden" name="zip" value= '{{ zipcode }}'> 
+                <input type="hidden" name="id" value= '{{ r.id }}'> 
+                {% if r.review == -1 %}
+                <button type="submit" class="disliked"> Dislike </button> 
+                {% else %} 
                 <button type="submit"> Dislike </button> 
+                {% endif %}
               </form>
             </tr>
           {% endfor %}
